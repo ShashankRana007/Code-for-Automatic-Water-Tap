@@ -1,0 +1,24 @@
+#include <Servo.h>
+#define MoistS A0
+Servo servol;
+
+void setup() {
+servol.attach(9);
+pinMode(MoistS, INPUT);
+Serial.begin(9600);
+}
+
+void loop() {
+ int MoistValue=analogRead(MoistS);
+ Serial.print(MoistValue);
+ Serial.println();
+ delay(1000);
+ if (MoistValue<400)
+ {
+ servol.write(180);
+ }
+ else
+ {
+ servol.write(0);
+ }
+ }
